@@ -1,5 +1,6 @@
 from tastypie.resources import ModelResource
 from tastypie.serializers import Serializer
+from tastypie.authentication import ApiKeyAuthentication
 
 from siasa.siasaapi.models import Politician,Party
 
@@ -14,4 +15,5 @@ class PartyResource(ModelResource):
         queryset = Party.objects.all()
         include_resource_uri = True
         resource_name= 'parties'
+        authentication = ApiKeyAuthentication()
 
