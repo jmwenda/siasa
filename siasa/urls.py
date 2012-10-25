@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from tastypie.api import Api
-from siasa.siasaapi.api import PoliticianResource
+from siasa.siasaapi.api import PoliticianResource,PartyResource
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -8,6 +8,7 @@ admin.autodiscover()
 
 v1_api = Api(api_name='v1')
 v1_api.register(PoliticianResource())
+v1_api.register(PartyResource())
 
 urlpatterns = patterns('',
     # Examples:
