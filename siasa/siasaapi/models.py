@@ -37,11 +37,38 @@ class Party(models.Model):
    party = models.CharField("Party Name",max_length=120)
    year_formed = models.DateTimeField()
    def __unicode__(self):
-        return party
+        return self.party
 
 class Politician(models.Model):
    surname = models.CharField("Surname",max_length=120)
    othernames = models.CharField("Other Names", max_length=120)
    dateofbirth = models.DateTimeField("Date of Birth")
    brief = models.TextField("Brief")
+   party = models.ForeignKey(Party)
+   twitter = models.CharField("Twitter",max_length=120)
+   facebook = models.CharField("FaceBook",max_length=150)
+   telephone = models.CharField("Phone",max_length=150)
+   email = models.CharField("Email",max_length=150)
+   is_incumbent = models.BooleanField(default=True)
+   constituency = models.ForeignKey(Constituency)
+   def __unicode__(self):
+        return str('%s %s' % (self.surname, self.othernames))
+
+
+EDU_TYPE = (('Doctorate','1'),('Masters','2'),('Graduate','3'))
+
+class Education(models.Model):
+   education_type = models.CharField(max_length=25,choices=EDU_TYPE)
+   university = models.CharField(max_length=50)
+   politician = models.ForeignKey(Politician)
+
+
+class ElectionResults(models.Model):
+   election = models.ForeignKey(Election)
+   constituency = models.ForeignKey(Constituency)
+   politician = models.ForeignKey(Politician)
+   party = models.ForeignKey(Party)
+   votes = models.CharField("Votes",max_length=25)
+   winner = models.BooleanField("Won")
+
 

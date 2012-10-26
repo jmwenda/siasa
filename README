@@ -1,3 +1,14 @@
 ============================================================
 This is the Siasa API for the nation election portal,thanks to the
 generous support from the African Media Initiative and World Bank
+
+============================================================
+The Political Parties API
+
+This lists all the political parties and the members or parliament associated
+with the said political party. On getting the mp reource uri, one can get more
+information on the said member of parliament, and the constituency they represent
+
+
+
+
