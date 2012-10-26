@@ -27,8 +27,10 @@ class Constituency(models.Model):
     def __unicode__(self):
         return self.constituency
 
+ELECTION_TYPE = (('1','General'),('2','By-election'),('3','Other'))
 class Election(models.Model):
     election = models.CharField("Election",max_length=120)
+    election_type = models.CharField(max_length=25,choices=ELECTION_TYPE)
     year = models.CharField("Year",max_length=120)
     def __unicode__(self):
         return self.election
@@ -68,7 +70,9 @@ class ElectionResults(models.Model):
    constituency = models.ForeignKey(Constituency)
    politician = models.ForeignKey(Politician)
    party = models.ForeignKey(Party)
-   votes = models.CharField("Votes",max_length=25)
-   winner = models.BooleanField("Won")
+   votes = models.FloatField("Votes",max_length=25)
+   winner = models.BooleanField("Won",default=True)
+   def __unicode__(self):
+        return str('%s %s' % (self.election, self.constituency))
 
 

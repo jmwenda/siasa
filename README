@@ -9,6 +9,22 @@ This lists all the political parties and the members or parliament associated
 with the said political party. On getting the mp reource uri, one can get more
 information on the said member of parliament, and the constituency they represent
 
+The Elections API
+============================================================
+This returns the different elections ever held wheather general or by elections, or other elecions.
+we have the elections held rest endpoint which is http://127.0.0.1:8000/api/v1/elections/?format=json
 
+The Election Results API
+============================================================
+This returns the results of the elections. This is a huge dump with associated details on the politian
+
+The Politician API
+============================================================
+This returns all the details of a specific politician
+
+The Constituencies API
+============================================================
+
+Returns all the details of specified consituencies and their back ground details 
 
 

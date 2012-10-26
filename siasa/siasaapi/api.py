@@ -1,3 +1,4 @@
+from django.conf.urls import patterns, include, url
 from tastypie.resources import ModelResource
 from tastypie.serializers import Serializer
 from tastypie.authentication import ApiKeyAuthentication
@@ -28,12 +29,23 @@ class EducationResource(ModelResource):
         include_resource_uri = False
         resource_name= 'education'
 
+class ResultsResource(ModelResource):
+    class Meta:
+        queryset = ElectionResults.objects.all()
+        include_resource_uri = False
+        resource_name= 'results'
+
+
 class ElectionResource(ModelResource):
+    #results = fields.ForeignKey(ResultsResource,'election',full=True)
     class Meta:
         queryset = Election.objects.all()
         include_resource_uri = False
         resource_name= 'elections'
-
+    #def override_urls(self):
+     #   return [
+      #      url(r"^(?P<resource_name>%s)/(?P<year>[\w\d_.-]+)/$" % self._meta.resource_name, self.wrap_view('dispatch_detail'), name="api_dispatch_detail"),
+       # ]
 class ConstituencyResource(ModelResource):
     class Meta:
         queryset = Constituency.objects.all()

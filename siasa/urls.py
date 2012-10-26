@@ -3,6 +3,7 @@ from tastypie.api import Api
 from siasa.siasaapi.api import PoliticianResource,PartyResource
 from siasa.siasaapi.api import CandidaciesResource,EducationResource
 from siasa.siasaapi.api import ConstituencyResource,MPResource
+from siasa.siasaapi.api import ElectionResource,ResultsResource
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -15,6 +16,9 @@ v1_api.register(EducationResource())
 v1_api.register(CandidaciesResource())
 v1_api.register(ConstituencyResource())
 v1_api.register(MPResource())
+v1_api.register(ElectionResource())
+v1_api.register(ResultsResource())
+#import pdb;pdb.set_trace()
 
 urlpatterns = patterns('',
     # Examples:
